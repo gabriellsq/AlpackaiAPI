@@ -1,0 +1,6 @@
+flask
+requests
+gunicorn
+google-generativeai
+google-cloud-aiplatform
+pyyaml

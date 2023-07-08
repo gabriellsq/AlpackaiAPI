@@ -1,18 +1,13 @@
 from flask import Flask, request
-
+from calls import generate_output
+from processor import process_request
 app = Flask(__name__)
 
-@app.route("/prompt", methods=["POST"])
-def prompt():
-    # Get the prompt from the request body.
-    gcp_prompt
-    prompt = request.json[gcp_prompt]
-
-    # Generate an output based on the prompt.
-    output = generate_output(prompt)
-
-    # Return the output to the client.
-    return jsonify(output)
+@app.route("/process", methods=['POST'])
+def process():
+    prompt = request.json['prompt']
+    processed_data = process_request(prompt)
+    return {'processed_data': processed_data}
 
 if __name__ == "__main__":
     app.run(debug=True)
